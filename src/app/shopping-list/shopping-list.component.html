@@ -3,10 +3,15 @@
 		<app-shopping-edit></app-shopping-edit>
 		<hr>
 		<ul class="list-group" *ngIf="ingredients.length>0; else shoppingListIsEmpty">
-			<a class="list-group-item" style="cursor: pointer;" *ngFor="let ingredient of ingredients">
+			<a
+        class="list-group-item"
+        style="cursor: pointer;"
+        *ngFor="let ingredient of ingredients; let i = index"
+        (click)="onEditItem(i)"
+      >
 				{{ ingredient.name }} ({{ ingredient.amount }})
 			</a>
-			
+
 		</ul>
 		<ng-template #shoppingListIsEmpty>
 			<p>Your shopping list is empty!</p>
